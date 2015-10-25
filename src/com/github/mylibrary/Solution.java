@@ -1,28 +1,26 @@
 package com.github.mylibrary;
 
-import com.github.mylibrary.module.ArrayObject;
+
+import com.github.mylibrary.module.DBdriver;
 
 /**
  * Created by x3mib_000 on 21.10.2015.
  */
 public class Solution {
+
     public static void main(String[] args) {
-        ArrayObject a = new ArrayObject();
-        ArrayObject b = new ArrayObject();
-        ArrayObject c = new ArrayObject();
-        a.addElem("Номер");
-        a.addElem(1);
+        DBdriver db = new DBdriver();
 
+        if (db.connect("jdbc:mysql://localhost:3306/disklibrary", "root", "root")){
+            System.out.println("Connect successful!");
+        }
 
+        while (true){
+            break;
+        }
 
-        b.addElem(a);
-        b.addElem(a);
-        b.addElem(a);
-
-
-        c = (ArrayObject)b.getArrObject(0);
-
-        System.out.println(c.getArrObject(1));
-
+        if (db.close()){
+            System.out.println("Connect close!");
+        }
     }
 }
